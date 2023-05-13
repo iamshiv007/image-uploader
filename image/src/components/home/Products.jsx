@@ -4,10 +4,14 @@ import LaptopImage2 from '../../assets/images/LaptopImage2.jpg'
 import LaptopImage3 from '../../assets/images/LaptopImage3.jpg'
 import { Carousel } from 'react-bootstrap';
 import './Products.css'
+import { Link } from 'react-router-dom'
 const Products = () => {
   return (
     <div className="row gap-3 mb-4">
+        <div className='d-flex justify-content-between'>
       <h2>Products</h2>
+      <Link to='/product/new' className='btn btn-primary'>New Product</Link>
+      </div>
       <div className="card col-md-3">
       <Carousel>
         <Carousel.Item>
