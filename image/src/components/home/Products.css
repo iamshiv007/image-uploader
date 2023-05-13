@@ -1,0 +1,5 @@
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #f0afaf;
+  color:yellow !important /* Replace with your desired color */
+}
