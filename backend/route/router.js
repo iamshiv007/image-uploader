@@ -1,5 +1,5 @@
 const router = require("express").Router()
-const { createUser } = require('../controller/userController')
+const { createStudent } = require('../controller/studentController')
 const multer = require('multer')
 
 const storage = multer.diskStorage({
@@ -15,6 +15,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage })
 
 
-router.route("/user/new").post(upload.single("avatar"), createUser)
+router.route("/student/new").post(upload.single("avatar"), createStudent)
 
 module.exports = router

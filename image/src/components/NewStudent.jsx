@@ -1,34 +1,54 @@
 import React, { useState } from 'react'
 import ProfileIcon from '../assets/images/ProfileIcon.svg'
 import './NewStudent.css'
+import axios from 'axios'
 
 const NewStudent = () => {
   const [avatar, setAvatar] = useState(ProfileIcon);
+  const [formData, setFormData] = useState({})
 
   const selectImage = (e) => {
+    setFormData({...formData, [e.target.name]:e.target.files[0]})
+
     const file = e.target.files[0]
     const  reader = new FileReader()
 
     reader.onloadend = () => {
       const base64String = reader.result
       setAvatar(base64String)
-      console.log(base64String)
     }
 
     reader.readAsDataURL(file)
   }
+
+  const collectData = (e) => {
+    setFormData({...formData, [e.target.name]:e.target.value})
+  }
+
+  const submitForm = (e) => {
+    e.preventDefault()
+    const formData0 = new FormData()
+
+    formData0.append("name", formData.name)
+    formData0.append("birthday", formData.birthday)
+    formData0.append('avatar', formData.avatar)
+
+    axios.post('http://localhost:12000/api/student/new', formData0)
+    .then((user) => console.log(user))
+    .catch((err) => console.log(err))
+  }
   return (
     <div className='container'>
-      <form className='p-4 w-50 m-auto'>
+      <form onSubmit={submitForm} encType='multipart/form-data' className='p-4 w-50 m-auto'>
       <h2>New Student</h2>
         <label>Name</label>
-      <input class="form-control mb-2" type="text" placeholder="Name"/>
+      <input onChange={collectData} name='name' class="form-control mb-2" type="text" placeholder="Name"/>
       <label>Birthday</label>
-      <input class="form-control mb-2" type="text" placeholder="Birthday"/>
+      <input onChange={collectData} name='birthday' class="form-control mb-2" type="text" placeholder="Birthday"/>
       <label style={{display:"block"}} htmlFor="">Avatar</label>
       <label className='mb-4'  htmlFor='avatar'><img htmlFor='avatar' src={avatar} alt="" /></label>
-      <input onChange={selectImage} style={{display:"none"}} id='avatar' class="form-control mb-2" type="file" placeholder="Avatar"/>
-      <button style={{display:"block"}} className='btn btn-primary'>Submit</button>
+      <input accept='.png, .jpg, .jpeg' name='avatar' onChange={selectImage} style={{display:"none"}} id='avatar' class="form-control mb-2" type="file" placeholder="Avatar"/>
+      <button type='submit' style={{display:"block"}} className='btn btn-primary'>Submit</button>
       </form>
     </div>
   )
