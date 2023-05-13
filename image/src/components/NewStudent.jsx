@@ -42,12 +42,12 @@ const NewStudent = () => {
       <form onSubmit={submitForm} encType='multipart/form-data' className='p-4 w-50 m-auto'>
       <h2>New Student</h2>
         <label>Name</label>
-      <input onChange={collectData} name='name' class="form-control mb-2" type="text" placeholder="Name"/>
+      <input onChange={collectData} name='name' className="form-control mb-2" type="text" placeholder="Name"/>
       <label>Birthday</label>
-      <input onChange={collectData} name='birthday' class="form-control mb-2" type="text" placeholder="Birthday"/>
+      <input onChange={collectData} name='birthday' className="form-control mb-2" type="text" placeholder="Birthday"/>
       <label style={{display:"block"}} htmlFor="">Avatar</label>
-      <label className='mb-4'  htmlFor='avatar'><img htmlFor='avatar' src={avatar} alt="" /></label>
-      <input accept='.png, .jpg, .jpeg' name='avatar' onChange={selectImage} style={{display:"none"}} id='avatar' class="form-control mb-2" type="file" placeholder="Avatar"/>
+      <label className='mb-4' htmlFor='avatar'><img htmlFor='avatar' src={avatar} alt="" /></label>
+      <input accept='.png, .jpg, .jpeg' name='avatar' onChange={selectImage} style={{display:"none"}} id='avatar' className="form-control mb-2" type="file" placeholder="Avatar"/>
       <button type='submit' style={{display:"block"}} className='btn btn-primary'>Submit</button>
       </form>
     </div>

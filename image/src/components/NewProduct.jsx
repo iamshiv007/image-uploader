@@ -4,8 +4,8 @@ const NewProduct = () => {
   return (
     <div className='container'>
       <form>
-      <input class="form-control" type="text" placeholder="Name"/>
-      <input class="form-control" type="text" placeholder="Birthday"/>
+      <input className="form-control" type="text" placeholder="Name"/>
+      <input className="form-control" type="text" placeholder="Birthday"/>
       </form>
     </div>
   )
