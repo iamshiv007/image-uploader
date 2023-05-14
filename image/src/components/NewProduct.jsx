@@ -13,8 +13,6 @@ const NewProduct = () => {
       images: [...formData.images, e.target.files[0]],
     });
 
-    console.log(formData.images)
-
     const file = e.target.files[0];
     const reader = new FileReader();
 
