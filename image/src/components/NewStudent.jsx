@@ -34,7 +34,7 @@ const NewStudent = () => {
     formData0.append('avatar', formData.avatar)
 
     axios.post('http://localhost:12000/api/student/new', formData0)
-    .then((user) => console.log(user))
+    .then((student) => console.log(student))
     .catch((err) => console.log(err))
   }
   return (
@@ -46,7 +46,7 @@ const NewStudent = () => {
       <label>Birthday</label>
       <input onChange={collectData} name='birthday' className="form-control mb-2" type="text" placeholder="Birthday"/>
       <label style={{display:"block"}} htmlFor="">Avatar</label>
-      <label className='mb-4' htmlFor='avatar'><img htmlFor='avatar' src={avatar} alt="" /></label>
+      <label className='mb-4' htmlFor='avatar'><img className='student' htmlFor='avatar' src={avatar} alt="" /></label>
       <input accept='.png, .jpg, .jpeg' name='avatar' onChange={selectImage} style={{display:"none"}} id='avatar' className="form-control mb-2" type="file" placeholder="Avatar"/>
       <button type='submit' style={{display:"block"}} className='btn btn-primary'>Submit</button>
       </form>

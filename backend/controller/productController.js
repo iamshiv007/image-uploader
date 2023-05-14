@@ -5,7 +5,7 @@ exports.createProduct = (req, res) => {
     const { name, price } = req.body
     const images = req.files.map((file) => file.filename)
 
-    Student.create({name, price, images})
+    Product.create({name, price, images})
     .then((product) => res.status(201).json({ success:true, product}))
     .catch((err) => res.status(500).json({ success:false, err}))
 }
